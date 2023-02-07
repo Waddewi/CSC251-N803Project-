@@ -47,10 +47,10 @@ final double BASEPRICE = 600;
       return providerName;
    }
    
-   public void setProvider(String company)
+   public void setProvider(String prN)
    {
    
-      provider = company;
+      providerName = prN;
    }
    
    public String getName1()
