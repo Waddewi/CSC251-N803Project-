@@ -1,40 +1,35 @@
-import java.util.Scanner;//Import for the Scanner class to read keyboard inputs
+import java.util.Scanner;//Import for the Scanner class to read file inputs
+import java.util.ArrayList;//Import for ArrayList
+import java.io.*;//Import for File reading
 
 public class Project_William_WaddellJacobs
 {
-   public static void main(String args[])
+   public static void main(String args[]) throws IOException
    {  
       //variable declarations
       int policyNumber, age;
       String providerName, name1, name2, smokingStatus;
       double height, weight;
       
-      Scanner keyboard = new Scanner(System.in);//variable to read keyboard inputs
+      Scanner file = new Scanner(new File("PolicyInfo.txt"));
+      ArrayList<Policy> info = new ArrayList<>(); //creating ArrayList to store Policy objects
       
-      //User Prompts for input
-      System.out.print("Please enter the Policy Number: ");
-      policyNumber = keyboard.nextInt();
-      keyboard.nextLine();
-      System.out.print("Please enter the Provider Name: ");
-      providerName = keyboard.nextLine();
-      System.out.print("Please enter the Policyholder's First Name: ");
-      name1 = keyboard.nextLine();
-      System.out.print("Please enter the Policyholder's Last Name: ");
-      name2 = keyboard.nextLine();
-      System.out.print("Please enter the Policyholder's Age: ");
-      age = keyboard.nextInt();
-      keyboard.nextLine();
-      System.out.print("Please enter the Policyholder's Smoking Status: ");
-      smokingStatus = keyboard.nextLine();
-      System.out.print("Please enter the Policyholder's Height: ");
-      height = keyboard.nextDouble();
-      System.out.print("Please enter the Policyholder's Weight: ");
-      weight = keyboard.nextDouble();
-      
-      //Creating a object of the Policy class called P1
-      Policy p1 = new Policy(policyNumber, age, height, weight, name1, name2, providerName, smokingStatus);
-      
-      p1.getInfo();
+      while(file.hasNext())//loop will read the file and create objects for everyone in the file
+      {
+         policyNumber = file.nextInt();
+         file.nextLine();
+         providerName = file.nextLine();
+         name1 = file.nextLine();
+         name2 = file.nextLine();
+         age = file.nextInt();
+         file.nextLine();
+         smokingStatus = file.nextLine();
+         height = file.nextDouble();
+         weight = file.nextDouble();
+         
+         info.add(new Policy(policyNumber, age, height, weight, name1, name2, providerName, smokingStatus));
+      }
+      file.close();
       
    }
 }
