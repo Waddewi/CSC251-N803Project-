@@ -43,7 +43,7 @@ public class Project_William_WaddellJacobs
             notSmoke++;
       }
       
-      System.out.println("\nThe number of policies with a smoker is:" + smoke);
+      System.out.println("\n\nThe number of policies with a smoker is:" + smoke);
       System.out.println("The number of policies with a non-smoker is:" + notSmoke);
    }
 }
